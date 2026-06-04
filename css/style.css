@@ -1,0 +1,353 @@
+/* ==========================================================================
+   Obsidian Editorial - Vanilla CSS Design System
+   ========================================================================== */
+
+:root {
+    /* Colors */
+    --background: #0F1115;
+    --on-background: #F5F2EA;
+    --primary: #C8A977;
+    --on-primary: #0F1115;
+    --secondary: #B5B0A4;
+    --on-secondary: #0F1115;
+    --surface: #171A21;
+    --on-surface: #F5F2EA;
+    --surface-variant: #1E222C;
+    --on-surface-variant: #B5B0A4;
+    --outline: #333946;
+    --outline-variant: #1E222C;
+    --surface-container-low: #121419;
+    --surface-container: #171A21;
+    --surface-container-high: #1E222C;
+    --surface-container-highest: #282D39;
+
+    /* Fonts */
+    --font-sans: 'Inter', sans-serif;
+    --font-serif: 'EB Garamond', serif;
+    --font-mono: 'JetBrains Mono', monospace;
+
+    /* Spacing */
+    --margin-mobile: 20px;
+    --container-max: 1200px;
+    --stack-sm: 12px;
+    --gutter: 24px;
+    --stack-md: 32px;
+    --stack-lg: 80px;
+}
+
+/* ==========================================================================
+   Base & Resets
+   ========================================================================== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: var(--background);
+    color: var(--on-background);
+    font-family: var(--font-sans);
+    line-height: 1.6;
+    overflow-x: hidden;
+    scroll-behavior: smooth;
+}
+
+::selection {
+    background-color: var(--primary);
+    color: var(--on-primary);
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+    transition: color 0.3s ease;
+}
+
+ul {
+    list-style: none;
+}
+
+button, input, textarea {
+    font-family: inherit;
+}
+
+/* ==========================================================================
+   Typography
+   ========================================================================== */
+.font-display {
+    font-family: var(--font-serif);
+    font-size: clamp(3rem, 8vw, 5.25rem); /* Responsive display text */
+    line-height: 1.1;
+    font-weight: 700;
+}
+
+.font-headline-lg {
+    font-family: var(--font-serif);
+    font-size: 3rem;
+    font-weight: 600;
+}
+
+.font-headline-md {
+    font-family: var(--font-serif);
+    font-size: 1.5rem;
+    font-weight: 500;
+}
+
+.font-body-lg {
+    font-size: 1.125rem;
+    font-weight: 400;
+}
+
+.font-label-mono {
+    font-family: var(--font-mono);
+    font-size: 0.875rem;
+    letter-spacing: 0.05em;
+    font-weight: 500;
+}
+
+.tech-gradient {
+    background: linear-gradient(135deg, var(--primary) 0%, var(--on-background) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.text-primary { color: var(--primary); }
+.text-on-surface-variant { color: var(--on-surface-variant); }
+
+/* ==========================================================================
+   Layout & Container
+   ========================================================================== */
+.container {
+    max-width: var(--container-max);
+    margin: 0 auto;
+    padding: 0 var(--margin-mobile);
+}
+
+.section-spacing {
+    margin-bottom: var(--stack-lg);
+}
+
+.flex-center {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* ==========================================================================
+   Components
+   ========================================================================== */
+/* Glass Card */
+.glass-card {
+    background: var(--surface);
+    border: 1px solid var(--outline-variant);
+    transition: all 0.3s ease;
+    border-radius: 12px;
+}
+.glass-card:hover {
+    border-color: var(--primary);
+    box-shadow: 0px 10px 30px -10px rgba(200, 169, 119, 0.15);
+}
+
+/* Buttons */
+.btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.75rem 1.5rem;
+    font-weight: 700;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    border: none;
+}
+.btn-primary {
+    background-color: var(--primary);
+    color: var(--on-primary);
+}
+.btn-primary:hover { filter: brightness(1.1); }
+.btn-outline {
+    background: transparent;
+    border: 1px solid var(--primary);
+    color: var(--primary);
+}
+.btn-outline:hover { background: rgba(200, 169, 119, 0.1); }
+
+/* Nav */
+.navbar {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 50;
+    background: rgba(15, 17, 21, 0.8);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid var(--outline-variant);
+}
+.nav-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 4rem;
+}
+.nav-links {
+    display: none;
+    gap: 2rem;
+}
+@media (min-width: 768px) {
+    .nav-links { display: flex; }
+}
+.nav-link {
+    color: var(--on-surface-variant);
+    transition: color 0.3s;
+}
+.nav-link:hover, .nav-link.active {
+    color: var(--primary);
+    font-weight: bold;
+    border-bottom: 2px solid var(--primary);
+    padding-bottom: 4px;
+}
+
+/* Hero Section */
+.hero {
+    padding-top: 8rem;
+    display: flex;
+    flex-direction: column;
+    gap: 3rem;
+}
+@media (min-width: 768px) {
+    .hero {
+        flex-direction: row;
+        align-items: center;
+    }
+}
+.hero-content { flex: 1; }
+.hero-image-container {
+    position: relative;
+    width: 100%;
+    max-width: 450px;
+    aspect-ratio: 1;
+}
+.hero-image-blur {
+    position: absolute;
+    inset: 0;
+    background: rgba(200, 169, 119, 0.1);
+    filter: blur(100px);
+    border-radius: 50%;
+}
+.hero-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 12px;
+    filter: grayscale(100%);
+    opacity: 0.8;
+}
+
+/* Grids */
+.grid-2 {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--gutter);
+}
+@media (min-width: 768px) { .grid-2 { grid-template-columns: 1fr 1fr; } }
+.grid-4 {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2rem;
+}
+@media (min-width: 768px) { .grid-4 { grid-template-columns: repeat(4, 1fr); } }
+
+/* Forms */
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    margin-bottom: 1.5rem;
+}
+.form-input {
+    width: 100%;
+    background-color: var(--background);
+    border: 1px solid var(--outline-variant);
+    border-radius: 8px;
+    padding: 1rem;
+    color: var(--on-surface);
+    outline: none;
+    transition: all 0.3s ease;
+}
+.form-input:focus {
+    border-color: var(--primary);
+    box-shadow: 0 0 0 1px var(--primary);
+}
+
+/* Footer */
+.footer {
+    background-color: var(--surface-container-low);
+    border-top: 1px solid var(--outline-variant);
+    padding: var(--stack-lg) 0;
+}
+.footer-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2rem;
+}
+@media (min-width: 768px) {
+    .footer-content {
+        flex-direction: row;
+        justify-content: space-between;
+    }
+}
+
+/* ==========================================================================
+   Added Layouts (Skills, Honors, Asymmetric Grid)
+   ========================================================================== */
+.grid-asym {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--gutter);
+}
+@media (min-width: 768px) { 
+    .grid-asym { grid-template-columns: repeat(12, 1fr); }
+    .col-8 { grid-column: span 8; }
+    .col-4 { grid-column: span 4; }
+    .col-5 { grid-column: span 5; }
+    .col-7 { grid-column: span 7; }
+}
+
+.skill-category {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+.skill-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+}
+.skill-tag {
+    padding: 0.25rem 0.75rem;
+    background-color: var(--surface-variant);
+    border: 1px solid var(--outline-variant);
+    border-radius: 4px;
+    color: var(--on-surface-variant);
+    font-size: 0.875rem;
+    transition: all 0.3s ease;
+}
+.skill-tag:hover {
+    color: var(--primary);
+    border-color: var(--primary);
+}
+
+.lang-meter {
+    display: flex;
+    gap: 0.25rem;
+}
+.dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background-color: var(--primary);
+}
+.dot-empty {
+    background-color: var(--outline-variant);
+}
