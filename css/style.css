@@ -309,9 +309,19 @@ button, input, textarea {
 @media (min-width: 768px) { 
     .grid-asym { grid-template-columns: repeat(12, 1fr); }
     .col-8 { grid-column: span 8; }
-    .col-4 { grid-column: span 4; }
-    .col-5 { grid-column: span 5; }
     .col-7 { grid-column: span 7; }
+    .col-6 { grid-column: span 6; }
+    .col-5 { grid-column: span 5; }
+    .col-4 { grid-column: span 4; }
+}
+
+.grid-3 {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+}
+@media (min-width: 768px) { 
+    .grid-3 { grid-template-columns: repeat(3, 1fr); } 
 }
 
 .skill-category {
